@@ -1,6 +1,6 @@
 {
   "name": "chatgpt-openaiapi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ChatGPT with OpenAI API",
   "type": "commonjs",
   "main": "./src/main.js",
@@ -24,8 +24,8 @@
   },
   "brain": {
     "name": "ChatGPT",
-    "displayName": "ChatGPT",
-    "description": "ChatGPT with OpenAI API",
+    "displayName": "HubAI ChatGPT",
+    "description": "HubAI brain that uses OpenAI API",
     "capabilities": [
       "conversation",
       "voice_transcription",
@@ -45,7 +45,7 @@
         "name": "textModel",
         "type": "string",
         "required": true,
-        "defaultValue": "gpt-4",
+        "defaultValue": "GPT 4",
         "enumValues": [
           "GPT 4",
           "GPT 3.5"
@@ -95,6 +95,22 @@
         "scope": "chat_overridable",
         "capabilities": [
           "voice_transcription"
+        ]
+      },
+      {
+        "displayName": "Image Generation Model",
+        "description": "What model to use for generating an image. Dall-e 3 is the latest model released in Nov 2023. Dall-e 2 is the previous model released in Nov 2022. Dall-e 3 is slower, but generates better images.",
+        "name": "imageGenerationModel",
+        "type": "string",
+        "required": true,
+        "defaultValue": "Dall-E 3",
+        "enumValues": [
+          "Dall-E 2",
+          "Dall-E 3"
+        ],
+        "scope": "chat_overridable",
+        "capabilities": [
+          "image_generation"
         ]
       },
       {

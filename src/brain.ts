@@ -27,6 +27,7 @@ export interface ISettings {
   imageGenerationCount: string;
   maxCharactersHistorySize: number;
   imageDetail: 'low' | 'high';
+  imageGenerationModel: string;
 }
 
 /* If your brain does not support AudioTranscription just remove the interface implementation */
@@ -98,10 +99,21 @@ export default class MyBrainService
       responseFormat = 'b64_json';
     }
 
+    const textModels = {
+      'Dall-E 2': 'dall-e-2',
+      'Dall-E 3': 'dall-e-3',
+    };
+
+    const model = textModels[context.settings.imageGenerationModel];
+
     const params: OpenAI.Images.ImageGenerateParams = {
+      model,
       prompt: prompt.message.trim(),
       n: Number.parseInt(context.settings.imageGenerationCount),
-      size: context.settings.imageGenerationSize,
+      size:
+        model === 'dall-e-3'
+          ? '1024x1024'
+          : context.settings.imageGenerationSize,
       user: context.senderId,
       response_format: responseFormat as any,
     };
@@ -154,7 +166,8 @@ export default class MyBrainService
         validationResult,
       });
     }
-    const maxCharactersHistorySize = context.settings?.maxCharactersHistorySize ?? 3000;
+    const maxCharactersHistorySize =
+      context.settings?.maxCharactersHistorySize ?? 3000;
 
     const messagesTruncated = this.truncateStringList(
       prompts,
