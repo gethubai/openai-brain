@@ -1,6 +1,6 @@
 {
   "name": "chatgpt-openaiapi",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "ChatGPT with OpenAI API",
   "type": "commonjs",
   "main": "./src/main.js",
@@ -45,7 +45,7 @@
         "name": "textModel",
         "type": "string",
         "required": true,
-        "defaultValue": "GPT 4",
+        "defaultValue": "GPT 3.5",
         "enumValues": [
           "GPT 4",
           "GPT 3.5"

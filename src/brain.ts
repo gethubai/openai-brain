@@ -109,7 +109,7 @@ export default class MyBrainService
     const params: OpenAI.Images.ImageGenerateParams = {
       model,
       prompt: prompt.message.trim(),
-      n: Number.parseInt(context.settings.imageGenerationCount),
+      n: model === 'dall-e-3' ? 1 : Number.parseInt(context.settings.imageGenerationCount), // Dall-e 3 only supports 1 image
       size:
         model === 'dall-e-3'
           ? '1024x1024'
@@ -270,7 +270,7 @@ export default class MyBrainService
     const validation = new BrainSettingsValidationResult();
 
     if (!settings?.apiKey || settings.apiKey.length < 10) {
-      validation.addFieldError('apiKey', 'API key format is invalid');
+      validation.addFieldError('apiKey', 'You must provide a valid API Key to use this brain. Go to Brain Settings to add it. You can get an API Key at https://platform.openai.com/account/api-keys');
     }
 
     return validation;
