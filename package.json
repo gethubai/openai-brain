@@ -103,7 +103,7 @@
         "name": "imageGenerationModel",
         "type": "string",
         "required": true,
-        "defaultValue": "Dall-E 3",
+        "defaultValue": "Dall-E 2",
         "enumValues": [
           "Dall-E 2",
           "Dall-E 3"
