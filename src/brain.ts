@@ -109,7 +109,10 @@ export default class MyBrainService
     const params: OpenAI.Images.ImageGenerateParams = {
       model,
       prompt: prompt.message.trim(),
-      n: model === 'dall-e-3' ? 1 : Number.parseInt(context.settings.imageGenerationCount), // Dall-e 3 only supports 1 image
+      n:
+        model === 'dall-e-3'
+          ? 1
+          : Number.parseInt(context.settings.imageGenerationCount), // Dall-e 3 only supports 1 image
       size:
         model === 'dall-e-3'
           ? '1024x1024'
@@ -269,8 +272,27 @@ export default class MyBrainService
   validateSettings(settings: ISettings): BrainSettingsValidationResult {
     const validation = new BrainSettingsValidationResult();
 
+    const content = `# OpenAI API Key is Missing
+    Ops! Looks like you didn't configure your OpenAI API Key yet. This is required to use this brain.
+
+    ## How to get an OpenAI API Key
+
+    [Log in into your Open AI account](https://platform.openai.com/login?launch) or [create one](https://chat.openai.com/auth/login) if you don't have it.
+    After that, go to the [API Key section of Open AI dashboard](https://platform.openai.com/api-keys) and copy your API key (or generate one if you still don't have).
+
+    ![Open AI Dashboard](https://www.hubai.app/assets/images/openaidashboard-a5eec4bd5881c386268c5f7e8a02cdbb.png)
+
+    ## How to configure your OpenAI API Key at HubAI
+
+    Go to the Brains page, select this brain and set the OpenAI API Key. After that just click on the **Save Settings** button and you're ready to go!
+    ![brain settings](https://www.hubai.app/assets/images/brain-settings-40bc90772d6b2ab68a8ab4a255cb4987.png)
+
+    ## How to use gpt-4 and Dall-e-3 premium models
+In order to use all the features that Chat GPT brain has to offer (like gpt-4), we recommend you to buy at least $0.5 cents of credits on Open AI. You can do that [by clicking here](https://platform.openai.com/account/billing/overview). You only have to do this once.
+    `;
+
     if (!settings?.apiKey || settings.apiKey.length < 10) {
-      validation.addFieldError('apiKey', 'You must provide a valid API Key to use this brain. Go to Brain Settings to add it. You can get an API Key at https://platform.openai.com/account/api-keys');
+      validation.addError(content);
     }
 
     return validation;
