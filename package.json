@@ -1,13 +1,13 @@
 {
   "name": "chatgpt-openaiapi",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "ChatGPT with OpenAI API",
   "type": "commonjs",
   "main": "./src/main.js",
   "icon": "icon.png",
   "engines": {
     "node": ">= 18.12 <19",
-    "hubai": "^0.0.1"
+    "hubai": ">= 0.1.0-alpha.13 || 1.x"
   },
   "scripts": {
     "start": "nodemon ./src/devServer.ts",
