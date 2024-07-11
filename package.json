@@ -1,6 +1,6 @@
 {
   "name": "chatgpt-openaiapi",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "ChatGPT with OpenAI API",
   "type": "commonjs",
   "main": "./src/main.js",
