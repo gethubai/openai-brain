@@ -214,9 +214,9 @@ export default class MyBrainService
     };
 
     const textModels = {
-      'GPT 4': 'gpt-4o',
-      'GPT 3.5': 'gpt-3.5-turbo-0125',
-      vision: 'gpt-4o',
+      'GPT 4o': 'gpt-4o',
+      'GPT 4o-mini': 'gpt-4o-mini',
+      vision: 'gpt-4o-mini',
     };
 
     // We create the params to send to the API
