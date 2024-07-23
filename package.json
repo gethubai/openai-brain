@@ -45,10 +45,10 @@
         "name": "textModel",
         "type": "string",
         "required": true,
-        "defaultValue": "GPT 3.5",
+        "defaultValue": "GPT 4o-mini",
         "enumValues": [
-          "GPT 4",
-          "GPT 3.5"
+          "GPT 4o",
+          "GPT 4o-mini"
         ],
         "scope": "chat_overridable",
         "capabilities": [
